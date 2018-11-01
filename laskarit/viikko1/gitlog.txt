@@ -33,5 +33,3 @@ kurssit
                                                             ├── file22
                                                                         └── file3
                                                                         
-                                                                        22 directories, 11 files
-                                                                        
