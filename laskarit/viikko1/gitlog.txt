@@ -1,0 +1,37 @@
+kurssit
+├── ot2018
+│   ├── temp
+│   └── viikko1
+│       └── temp
+│           ├── Unicafe
+│           │   ├── pom.xml
+│           │   └── src
+│           │       ├── main
+│           │       │   ├── java
+│           │       │   │   └── com
+│           │       │   │       └── mycompany
+│           │       │   │           └── unicafe
+│           │       │   │               ├── Kassapaate.java
+│           │       │   │               ├── Maksukortti.java
+│           │       │   │               └── Paaohjelma.java
+│           │       │   └── resources
+│           │       └── test
+│           │           └── java
+│           │               └── com
+│           │                   └── mycompany
+│           │                       └── unicafe
+│           │                           └── MaksukorttiTest.java
+│           └── Unicafe.zip
+└── otm2018
+    ├── otm-harjoitustyo
+        └── otm_viikko1
+                ├── eka.txt
+                        ├── kolmas.txt
+                                ├── stuff
+                                        │   └── stuff.txt
+                                                └── tiedostoja
+                                                            ├── file22
+                                                                        └── file3
+                                                                        
+                                                                        22 directories, 11 files
+                                                                        
