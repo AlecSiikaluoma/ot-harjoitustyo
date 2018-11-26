@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.*?>
 
 
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="382.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<FlowPane fx:controller="CalculatorController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="459.0" prefWidth="382.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TextField prefHeight="86.0" prefWidth="381.0" text="14 + 54">
+      <TextField fx:id="input" prefHeight="86.0" prefWidth="381.0" text="">
          <font>
             <Font size="24.0" />
          </font>
@@ -39,22 +39,22 @@
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="7" GridPane.rowIndex="1">
+            <Button onAction="#input" mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="7" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="4" GridPane.rowIndex="2">
+            <Button onAction="#input" mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="4" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="1" GridPane.rowIndex="3">
+            <Button onAction="#input" mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="8" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button onAction="#input" mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="8" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -64,22 +64,22 @@
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="9" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Button onAction="#input" mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="9" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="5" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button onAction="#input" mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="5" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="2" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Button onAction="#input" mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="2" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="0" GridPane.rowIndex="4">
+            <Button onAction="#input" mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="0" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -104,27 +104,27 @@
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="6" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Button onAction="#input" mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="6" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="3" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <Button onAction="#input" mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="3" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="-" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <Button onAction="#substraction" mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="-" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="+" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <Button onAction="#addition" mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="+" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="=" GridPane.columnIndex="3" GridPane.rowIndex="4">
+            <Button onAction="#results" mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="=" GridPane.columnIndex="3" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>

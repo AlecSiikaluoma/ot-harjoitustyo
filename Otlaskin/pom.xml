@@ -8,6 +8,14 @@
     <artifactId>Otlaskin</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>jacoco-maven-plugin</artifactId>
+            <version>0.8.2</version>
+        </dependency>
+    </dependencies>
+
     <build>
         <plugins>
             <plugin>
