@@ -6,4 +6,5 @@
 | 12.11 | 2 | Projektin suunnittelu ja JavaFX:n opettelu |
 | 19.11 | 3 | fxml:n lisäys ja alustavan käyttöliittymän teko |
 | 26.11| 2 | Controllerin lisäys fxml sovellukseen. Sekä nappien toiminallisuuksien teko |
+| 26.11| 1 | Refaktorointi. Laskimen logiikan erottelu |
 | - | 8 | yhteensä |
