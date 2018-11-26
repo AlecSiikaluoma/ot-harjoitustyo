@@ -11,7 +11,6 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        //Parent root = FXMLLoader.load(getClass().getResource("Otlaskin.fxml"));
         try {
             FXMLLoader loader =new FXMLLoader(Main.class.getResource("Otlaskin.fxml"));
             FlowPane pane = loader.load();
@@ -21,7 +20,6 @@ public class Main extends Application {
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

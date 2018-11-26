@@ -17,7 +17,7 @@ public class CalculatorController extends FlowPane {
 
     private Main main;
     private boolean operationPending = false;
-    private long value;
+    private Calculator calculator;
 
     private Operations nextOperation;
 
@@ -25,11 +25,14 @@ public class CalculatorController extends FlowPane {
         ADDITION, SUBSTRACTION
     }
 
+    public CalculatorController() {
+        calculator = new Calculator();
+    }
+
     @FXML
     private TextField input;
 
     public void setMain(Main main) {
-
         this.main = main;
     }
 
@@ -39,17 +42,17 @@ public class CalculatorController extends FlowPane {
             if(values.length >= 2) {
                 int value1 = Integer.parseInt(values[0]);
                 int value2 = Integer.parseInt(values[1]);
-                value = value1 + value2;
+                calculator.addition(value1, value2);
             }
         } else if (nextOperation == Operations.SUBSTRACTION) {
             String[] values = input.getText().split("\\-");
             if(values.length >= 2) {
                 int value1 = Integer.parseInt(values[0]);
                 int value2 = Integer.parseInt(values[1]);
-                value = value1 - value2;
+                calculator.subsctraction(value1, value2);
             }
         }
-        input.setText("" + value);
+        input.setText("" + calculator.getValue());
         operationPending = false;
     }
 
@@ -57,7 +60,6 @@ public class CalculatorController extends FlowPane {
     public void clear() {
         input.setText("");
         operationPending = false;
-        value = 0;
     }
 
     @FXML
