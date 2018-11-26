@@ -29,7 +29,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="AC" textAlignment="CENTER">
+            <Button onAction="#clear" mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="C" textAlignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>

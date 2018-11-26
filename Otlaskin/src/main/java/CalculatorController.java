@@ -54,6 +54,13 @@ public class CalculatorController extends FlowPane {
     }
 
     @FXML
+    public void clear() {
+        input.setText("");
+        operationPending = false;
+        value = 0;
+    }
+
+    @FXML
     public void input(ActionEvent event) {
         Button source = (Button) event.getSource();
         System.out.println(source.getText());
