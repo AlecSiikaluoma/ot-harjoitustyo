@@ -19,10 +19,10 @@ public class CalculatorController extends FlowPane {
     private boolean operationPending = false;
     private Calculator calculator;
 
-    private Operations nextOperation;
+    private Operations nextOperation = Operations.NONE;
 
     public enum Operations {
-        ADDITION, SUBSTRACTION
+        ADDITION, SUBSTRACTION, MULTIPLICATION, DIVISION, NONE
     }
 
     public CalculatorController() {
@@ -37,29 +37,49 @@ public class CalculatorController extends FlowPane {
     }
 
     private void operate() {
+        if(this.nextOperation == Operations.NONE) {
+            return ;
+        }
         if (nextOperation == Operations.ADDITION) {
             String[] values = input.getText().split("\\+");
             if(values.length >= 2) {
                 int value1 = Integer.parseInt(values[0]);
                 int value2 = Integer.parseInt(values[1]);
-                calculator.addition(value1, value2);
+                calculator.addition(value2);
             }
         } else if (nextOperation == Operations.SUBSTRACTION) {
             String[] values = input.getText().split("\\-");
             if(values.length >= 2) {
                 int value1 = Integer.parseInt(values[0]);
                 int value2 = Integer.parseInt(values[1]);
-                calculator.subsctraction(value1, value2);
+                calculator.subsctraction(value2);
+            }
+        } else if (nextOperation == Operations.MULTIPLICATION) {
+            String[] values = input.getText().split("\\-");
+            if(values.length >= 2) {
+                int value1 = Integer.parseInt(values[0]);
+                int value2 = Integer.parseInt(values[1]);
+                calculator.multiplication(value2);
+            }
+        } else if (nextOperation == Operations.DIVISION) {
+            String[] values = input.getText().split("\\-");
+            if(values.length >= 2) {
+                int value1 = Integer.parseInt(values[0]);
+                int value2 = Integer.parseInt(values[1]);
+                calculator.division(value2);
             }
         }
         input.setText("" + calculator.getValue());
         operationPending = false;
+        nextOperation = Operations.NONE;
     }
 
     @FXML
     public void clear() {
         input.setText("");
+        calculator.clear();
         operationPending = false;
+        nextOperation = Operations.NONE;
     }
 
     @FXML
@@ -78,28 +98,60 @@ public class CalculatorController extends FlowPane {
     @FXML
     public void addition() {
         if(!operationPending) {
+            this.calculator.init(Integer.parseInt(input.getText()));
             this.operationPending = true;
             input.setText(input.getText() + "+");
             nextOperation = Operations.ADDITION;
         } else {
             operate();
-            if(nextOperation != Operations.ADDITION) {
-                input.setText(input.getText() + "+");
-            }
+            input.setText(input.getText() + "+");
+            operationPending = true;
+            nextOperation = Operations.ADDITION;
         }
     }
 
     @FXML
     public void substraction() {
         if(!operationPending) {
+            this.calculator.init(Integer.parseInt(input.getText()));
             this.operationPending = true;
             input.setText(input.getText() + "-");
             nextOperation = Operations.SUBSTRACTION;
         } else {
            operate();
-            if(nextOperation != Operations.SUBSTRACTION) {
-                input.setText(input.getText() + "-");
-            }
+           input.setText(input.getText() + "-");
+           operationPending = true;
+            nextOperation = Operations.SUBSTRACTION;
+        }
+    }
+
+    @FXML
+    public void multiplication() {
+        if(!operationPending) {
+            this.calculator.init(Integer.parseInt(input.getText()));
+            this.operationPending = true;
+            input.setText(input.getText() + "-");
+            nextOperation = Operations.MULTIPLICATION;
+        } else {
+            operate();
+            input.setText(input.getText() + "-");
+            operationPending = true;
+            nextOperation = Operations.MULTIPLICATION;
+        }
+    }
+
+    @FXML
+    public void division() {
+        if(!operationPending) {
+            this.calculator.init(Integer.parseInt(input.getText()));
+            this.operationPending = true;
+            input.setText(input.getText() + "-");
+            nextOperation = Operations.DIVISION;
+        } else {
+            operate();
+            input.setText(input.getText() + "-");
+            operationPending = true;
+            nextOperation = Operations.DIVISION;
         }
     }
 

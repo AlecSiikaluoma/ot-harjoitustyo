@@ -94,12 +94,12 @@
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="X" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <Button onAction="#multiplication" mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="X" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="/" GridPane.columnIndex="3">
+            <Button onAction="#division" mnemonicParsing="false" prefHeight="82.0" prefWidth="98.0" text="/" GridPane.columnIndex="3">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
