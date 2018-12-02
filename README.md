@@ -2,6 +2,10 @@
 
 Projektissa toteutetaan yksinkertainen laskin käyttäen Javaa ja Java FMXL. Laskin projekti sijaitsee kansiossa Otlasking.
 
+[Käyttöohje](https://github.com/AlecSiikaluoma/ot-harjoitustyo/blob/master/dokumentaatio/Käyttöohje.md)
+
+[Testausdokumentaatio](https://github.com/AlecSiikaluoma/ot-harjoitustyo/blob/master/dokumentaatio/Testausdokumentti.md)
+
 [Määrittelydokumentaatio](https://github.com/AlecSiikaluoma/ot-harjoitustyo/blob/master/dokumentaatio/Maarittelydokumentti.md)
 
 [Työaikakirjanpito](https://github.com/AlecSiikaluoma/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
