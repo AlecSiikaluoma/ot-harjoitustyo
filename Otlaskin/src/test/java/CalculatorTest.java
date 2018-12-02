@@ -59,5 +59,10 @@ public class CalculatorTest {
         assertEquals(calculator.getValue(), 0.0, 0);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void divideByZero() {
+        calculator = new Calculator(5);
+        calculator.division(0);
+    }
 
 }
