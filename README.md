@@ -22,7 +22,7 @@ mvn test
 Testikattavuusraportit luodaan komennolla
 
 ```
-mvn test:jacoco
+mvn jacoco:report
 ```
 
 ### Jar generointi
@@ -40,6 +40,14 @@ JavaDoc generoidaan komennolla
 mvn javadoc:javadoc
 ```
 JavaDocia voi tarkastella avaamalla selaimella tiedosto target/site/apidocs/index.html
+
+### Checkstyle
+
+Tiedostoon [checkstyle.xml](https://github.com/mluukkai/OtmTodoApp/blob/master/checkstyle.xml) määrittelemät tarkistukset suoritetaan komennolla
+
+```
+ mvn jxr:jxr checkstyle:checkstyle
+```
 
 ## Laskarit 
 
