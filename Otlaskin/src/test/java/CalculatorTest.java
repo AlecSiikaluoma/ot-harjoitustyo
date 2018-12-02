@@ -1,6 +1,7 @@
 /**
  * Created by alecsiikaluoma on 27.11.2018.
  */
+import domain.Calculator;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

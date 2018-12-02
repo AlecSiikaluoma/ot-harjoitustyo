@@ -1,6 +1,8 @@
+package domain;
+
 public class Calculator {
 
-    private int value;
+    private double value;
     private boolean empty;
 
     public Calculator() {
@@ -8,7 +10,7 @@ public class Calculator {
         this.empty = true;
     }
 
-    public int getValue() {
+    public double getValue() {
         return this.value;
     }
 
@@ -17,23 +19,23 @@ public class Calculator {
         this.empty = true;
     }
 
-    public void init(int val) {
+    public void init(double val) {
         this.value = val;
     }
 
-    public void addition(int val) {
+    public void addition(double val) {
         value = value + val;
     }
 
-    public void subsctraction(int val) {
+    public void subsctraction(double val) {
         value = value - val;
     }
 
-    public void multiplication(int val) {
+    public void multiplication(double val) {
         value = value * val;
     }
 
-    public void division(int val) {
+    public void division(double val) {
         value = value / val;
     }
 
