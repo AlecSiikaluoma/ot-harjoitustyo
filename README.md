@@ -43,7 +43,7 @@ JavaDocia voi tarkastella avaamalla selaimella tiedosto target/site/apidocs/inde
 
 ### Checkstyle
 
-Tiedostoon [checkstyle.xml](https://github.com/mluukkai/OtmTodoApp/blob/master/checkstyle.xml) määrittelemät tarkistukset suoritetaan komennolla
+Tiedostoon [checkstyle.xml](https://github.com/AlecSiikaluoma/ot-harjoitustyo/blob/master/Otlaskin/checkstyle.xml) määrittelemät tarkistukset suoritetaan komennolla
 
 ```
  mvn jxr:jxr checkstyle:checkstyle
