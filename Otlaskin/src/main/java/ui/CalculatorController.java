@@ -1,11 +1,21 @@
 package ui;
 
+import dao.CalculatorDAO;
+import domain.Operation;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.*;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.*;
 import domain.Calculator;
+import domain.Calculator.Operator;
+import javafx.scene.control.Label;
+import javafx.scene.paint.*;
+
+import java.util.List;
 
 /**
  * Created by alecsiikaluoma on 26.11.2018.
@@ -15,14 +25,11 @@ public class CalculatorController extends FlowPane {
     private Main main;
     private boolean operationPending = false;
     private Calculator calculator;
-    private Operations nextOperation = Operations.NONE;
-
-    public enum Operations {
-        ADDITION, SUBSTRACTION, MULTIPLICATION, DIVISION, NONE
-    }
+    private Operator nextOperation = Operator.NONE;
 
     public CalculatorController() {
-        calculator = new Calculator();
+        CalculatorDAO dao = new CalculatorDAO();
+        calculator = new Calculator(dao);
     }
 
     public void setMain(Main main) {
@@ -33,11 +40,14 @@ public class CalculatorController extends FlowPane {
     private TextField input;
 
     @FXML
+    private VBox history;
+
+    @FXML
     public void clear() {
         input.setText("");
         calculator.clear();
         operationPending = false;
-        nextOperation = Operations.NONE;
+        nextOperation = Operator.NONE;
     }
 
     @FXML
@@ -57,22 +67,22 @@ public class CalculatorController extends FlowPane {
 
     @FXML
     public void addition() {
-        evaluate(Operations.ADDITION);
+        evaluate(Operator.ADDITION);
     }
 
     @FXML
     public void substraction() {
-        evaluate(Operations.SUBSTRACTION);
+        evaluate(Operator.SUBSTRACTION);
     }
 
     @FXML
     public void multiplication() {
-        evaluate(Operations.MULTIPLICATION);
+        evaluate(Operator.MULTIPLICATION);
     }
 
     @FXML
     public void division() {
-        evaluate(Operations.DIVISION);
+        evaluate(Operator.DIVISION);
     }
 
     @FXML
@@ -97,51 +107,45 @@ public class CalculatorController extends FlowPane {
         }
     }
 
-    private void reloadValue() {
-        this.input.setText("" + calculator.getValue());
+    @FXML
+    public void clearData() {
+        this.calculator.clearData();
+        this.reloadHistory();
     }
 
-    private void operate() {
-        if(this.nextOperation == Operations.NONE) {
-            return ;
+    private void reloadHistory() {
+        history.getChildren().clear();
+        history.setPadding(new Insets(10));
+        List<Operation> historyData = this.calculator.getHistory();
+        for(Operation o : historyData) {
+            Button lab = new Button();
+            lab.setOnAction(new EventHandler<ActionEvent>()
+            {
+                @Override
+                public void handle(ActionEvent event)
+                {
+                    clear();
+                    calculator.init(o.getResult());
+                    input.setText(o.getResult() + "");
+                }
+            });
+
+            String text = "";
+            text += o.getValue1();
+            text += operatorToValue(o.getOperator());
+            text += o.getValue2();
+            text += "=";
+            text += o.getResult();
+            Pane pane = new Pane();
+            pane.getChildren().add(lab);
+            lab.setText(text);
+            this.history.getChildren().add(pane);
         }
-        String text = input.getText();
-        if(input.getText().substring(0,1).equals("-")) {
-            text = input.getText().substring(1,input.getText().length());
-        }
-        if (nextOperation == Operations.ADDITION) {
-            String[] values = text.split("\\+");
-            if(values.length >= 2) {
-                double value = Double.parseDouble(values[1]);
-                calculator.addition(value);
-            }
-        } else if (nextOperation == Operations.SUBSTRACTION) {
-            String[] values = text.split("\\-");
-            if(values.length >= 2) {
-                double value = Double.parseDouble(values[1]);
-                calculator.subsctraction(value);
-            }
-        } else if (nextOperation == Operations.MULTIPLICATION) {
-            String[] values = text.split("x");
-            if(values.length >= 2) {
-                double value = Double.parseDouble(values[1]);
-                calculator.multiplication(value);
-            }
-        } else if (nextOperation == Operations.DIVISION) {
-            String[] values = text.split("/");
-            if(values.length >= 2) {
-                double value = Double.parseDouble(values[1]);
-                calculator.division(value);
-            }
-        }
-        input.setText("" + calculator.getValue());
-        operationPending = false;
-        nextOperation = Operations.NONE;
     }
 
-    private void evaluate(Operations operator) {
+    private String operatorToValue(Operator o) {
         String operationCharacter = "";
-        switch (operator) {
+        switch (o) {
             case ADDITION:
                 operationCharacter = "+";
                 break;
@@ -157,6 +161,54 @@ public class CalculatorController extends FlowPane {
             default:
                 throw new Error("Operation not defined.");
         }
+        return operationCharacter;
+    }
+
+    private void reloadValue() {
+        this.input.setText("" + calculator.getValue());
+    }
+
+    private void operate() {
+        if(this.nextOperation == Operator.NONE) {
+            return ;
+        }
+        String text = input.getText();
+        if(input.getText().substring(0,1).equals("-")) {
+            text = input.getText().substring(1,input.getText().length());
+        }
+        if (nextOperation == Operator.ADDITION) {
+            String[] values = text.split("\\+");
+            if(values.length >= 2) {
+                double value = Double.parseDouble(values[1]);
+                calculator.addition(value);
+            }
+        } else if (nextOperation == Operator.SUBSTRACTION) {
+            String[] values = text.split("\\-");
+            if(values.length >= 2) {
+                double value = Double.parseDouble(values[1]);
+                calculator.subsctraction(value);
+            }
+        } else if (nextOperation == Operator.MULTIPLICATION) {
+            String[] values = text.split("x");
+            if(values.length >= 2) {
+                double value = Double.parseDouble(values[1]);
+                calculator.multiplication(value);
+            }
+        } else if (nextOperation == Operator.DIVISION) {
+            String[] values = text.split("/");
+            if(values.length >= 2) {
+                double value = Double.parseDouble(values[1]);
+                calculator.division(value);
+            }
+        }
+        this.reloadHistory();
+        input.setText("" + calculator.getValue());
+        operationPending = false;
+        nextOperation = Operator.NONE;
+    }
+
+    private void evaluate(Operator operator) {
+        String operationCharacter = operatorToValue(operator);
         if(!operationPending) {
             this.calculator.init(Double.parseDouble(input.getText()));
             this.operationPending = true;

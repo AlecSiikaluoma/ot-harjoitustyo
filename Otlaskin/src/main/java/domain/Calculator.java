@@ -1,25 +1,46 @@
 package domain;
 
+import dao.CalculatorDAO;
+
+import java.util.List;
+
 public class Calculator {
 
     private double value;
     private boolean empty;
 
+    private final CalculatorDAO calculatorDao;
+
+
+    public enum Operator {
+        ADDITION, SUBSTRACTION, MULTIPLICATION, DIVISION, NONE
+    }
+
     /**
-     * Initalizes new calculator with state 0 and sets empty flag true.
+     * Initalizes new calculator with state 0 and set empty flag true. Use database object to save operations
      */
-    public Calculator() {
+    public Calculator(CalculatorDAO dao) {
+        this.calculatorDao = dao;
         this.value = 0;
         this.empty = true;
     }
 
     /**
-     * Initalizes new calculator with vaue and sets empty flag true.
+     * Initalizes new calculator with vaue and set empty flag true. Use database object to save operations.
      * @return Initial value.
      */
-    public Calculator(double value) {
+    public Calculator(CalculatorDAO dao, double value) {
+        this.calculatorDao = dao;
         this.value = value;
         this.empty = true;
+    }
+
+    public List<Operation> getHistory() {
+        return this.calculatorDao.getAll();
+    }
+
+    public void clearData() {
+        this.calculatorDao.deleteAll();
     }
 
     /**
@@ -50,7 +71,9 @@ public class Calculator {
      * @param val Value to be added.
      */
     public void addition(double val) {
+        double value1 = this.value;
         value = value + val;
+        saveOperation(value1, val, Operator.ADDITION);
     }
 
     /**
@@ -58,7 +81,9 @@ public class Calculator {
      * @param val Value to be substracted
      */
     public void subsctraction(double val) {
+        double value1 = this.value;
         value = value - val;
+        saveOperation(value1, val, Operator.SUBSTRACTION);
     }
 
     /**
@@ -66,7 +91,9 @@ public class Calculator {
      * @param val Value to be multiplied by.
      */
     public void multiplication(double val) {
+        double value1 = this.value;
         value = value * val;
+        saveOperation(value1, val, Operator.MULTIPLICATION);
     }
 
     /**
@@ -74,10 +101,18 @@ public class Calculator {
      * @param val Dividing value.
      */
     public void division(double val) {
+        double value1 = this.value;
         if(val == 0.0) {
             throw new IllegalArgumentException("Tried to divide by zero");
         }
         value = value / val;
+        saveOperation(value1, val, Operator.DIVISION);
+
+    }
+
+
+    private void saveOperation(double val1, double val2, Operator operator) {
+        calculatorDao.add(val1, val2, this.value, operator);
     }
 
 }

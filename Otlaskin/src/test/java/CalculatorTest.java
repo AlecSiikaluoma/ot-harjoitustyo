@@ -1,6 +1,7 @@
 /**
  * Created by alecsiikaluoma on 27.11.2018.
  */
+import dao.CalculatorDAO;
 import domain.Calculator;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -8,10 +9,11 @@ import static org.junit.Assert.*;
 public class CalculatorTest {
 
     private Calculator calculator;
+    private CalculatorDAO dao = new CalculatorDAO();
 
     @Test
     public void addition() {
-        calculator = new Calculator();
+        calculator = new Calculator(dao);
         calculator.init(10);
         calculator.addition(5);
         assertEquals(calculator.getValue(), 15.0, 0);
@@ -21,7 +23,7 @@ public class CalculatorTest {
 
     @Test
     public void substraction() {
-        calculator = new Calculator();
+        calculator = new Calculator(dao);
         calculator.init(10);
         calculator.subsctraction(5);
         assertEquals(calculator.getValue(), 5.0, 0);
@@ -31,7 +33,7 @@ public class CalculatorTest {
 
     @Test
     public void multiplication() {
-        calculator = new Calculator();
+        calculator = new Calculator(dao);
         calculator.init(10);
         calculator.multiplication(5);
         assertEquals(calculator.getValue(), 50.0, 0);
@@ -41,7 +43,7 @@ public class CalculatorTest {
 
     @Test
     public void division() {
-        calculator = new Calculator();
+        calculator = new Calculator(dao);
         calculator.init(20);
         calculator.division(2);
         assertEquals(calculator.getValue(), 10.0, 0);
@@ -52,7 +54,7 @@ public class CalculatorTest {
 
     @Test
     public void clear() {
-        calculator = new Calculator();
+        calculator = new Calculator(dao);
         calculator.init(10.0);
         calculator.addition(5.0);
         calculator.clear();
@@ -61,7 +63,7 @@ public class CalculatorTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void divideByZero() {
-        calculator = new Calculator(5);
+        calculator = new Calculator(dao, 5);
         calculator.division(0);
     }
 

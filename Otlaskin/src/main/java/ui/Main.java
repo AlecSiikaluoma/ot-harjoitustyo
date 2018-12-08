@@ -8,8 +8,8 @@ import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import ui.CalculatorController;
 
+import java.sql.*;
 import java.io.IOException;
-
 
 public class Main extends Application {
 
@@ -23,8 +23,30 @@ public class Main extends Application {
             Scene scene = new Scene(pane);
             primaryStage.setScene(scene);
             primaryStage.show();
+
+            //Initialize database
+            this.initDatabase();
+
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void initDatabase() {
+        Connection connection = null;
+        try
+        {
+            // create a database connection
+            connection = DriverManager.getConnection("jdbc:sqlite:db/calculator.db");
+            Statement statement = connection.createStatement();
+            statement.setQueryTimeout(10);
+
+            // create
+            statement.executeUpdate("create table if not exists calculator (id integer primary key, value1 real, value2 real, result real, operation string)");
+        }
+        catch(SQLException e)
+        {
+            System.err.println(e.getMessage());
         }
     }
 
