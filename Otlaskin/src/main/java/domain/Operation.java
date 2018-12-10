@@ -1,7 +1,7 @@
 package domain;
 
 /**
- * Created by alecsiikaluoma on 8.12.2018.
+ * This class represent one operation that has been or is to be performed by the calculator.
  */
 
 import domain.Calculator.Operator;
@@ -13,6 +13,9 @@ public class Operation {
     private double result;
     private Operator operation;
 
+    /**
+     * Creates an operation object with empty values.
+     */
     public Operation() {
         this.value1 = 0;
         this.value2 = 0;
@@ -20,13 +23,13 @@ public class Operation {
         this.operation = Operator.NONE;
     }
 
-    public Operation(double val1, double val2, double result, String operation) {
-        this.value1 = val1;
-        this.value2 = val2;
-        this.result = result;
-        this.operation = Operator.valueOf(operation);
-    }
-
+    /**
+     * Creates an operation object from parameters.
+     * @param val1 The first value of the operation.
+     * @param val2 The second values of the operation.
+     * @param result Result of the operation as Operator objects.
+     * @param operation The operation to be performed for values.
+     */
     public Operation(double val1, double val2, double result, Operator operation) {
         this.value1 = val1;
         this.value2 = val2;

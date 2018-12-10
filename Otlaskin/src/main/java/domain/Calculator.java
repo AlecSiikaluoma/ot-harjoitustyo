@@ -4,13 +4,15 @@ import dao.CalculatorDAO;
 
 import java.util.List;
 
+/***
+ * This class represents the calculator, its operations and state.
+ */
 public class Calculator {
 
     private double value;
     private CalculatorMemory memory;
 
     private final CalculatorDAO calculatorDao;
-
 
     public enum Operator {
         ADDITION, SUBSTRACTION, MULTIPLICATION, DIVISION, NONE
@@ -26,8 +28,7 @@ public class Calculator {
     }
 
     /**
-     * Initalizes new calculator with value and saves database object to save operations.
-     * @return Initial value.
+     * Initializes new calculator with value and saves database object to save operations.
      */
     public Calculator(CalculatorDAO dao, double value) {
         this.calculatorDao = dao;
@@ -43,16 +44,18 @@ public class Calculator {
         return this.calculatorDao.getAll();
     }
 
-    public void clearData() {
-        this.calculatorDao.deleteAll();
-    }
-
-    /**
-     * @return Calculator's current state.
-     */
     public double getValue() {
         return this.value;
     }
+
+
+    /**
+     * Clears the calculator history.
+     */
+    public void clearHistory() {
+        this.calculatorDao.deleteAll();
+    }
+
 
     /**
      * Clears the calculator by setting state 0 and empty flag true.
@@ -83,7 +86,7 @@ public class Calculator {
                 this.addition(val);
                 break;
             case SUBSTRACTION:
-                this.subsctraction(val);
+                this.subtraction(val);
                 break;
             case MULTIPLICATION:
                 this.multiplication(val);
@@ -105,10 +108,10 @@ public class Calculator {
     }
 
     /**
-     * Performs substraction operation with parameter and current state.
-     * @param val Value to be substracted
+     * Performs subtraction operation with parameter and current state.
+     * @param val Value to be subtracted
      */
-    public void subsctraction(double val) {
+    public void subtraction(double val) {
         double value1 = this.value;
         value = value - val;
         saveOperation(value1, val, Operator.SUBSTRACTION);

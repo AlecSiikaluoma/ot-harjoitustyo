@@ -1,7 +1,7 @@
 package domain;
 
 /**
- * Created by alecsiikaluoma on 10.12.2018.
+ * This class functions as a help for interfacing with calculator.
  */
 
 import domain.Calculator.Operator;

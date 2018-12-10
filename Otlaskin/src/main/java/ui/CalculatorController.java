@@ -109,7 +109,7 @@ public class CalculatorController extends FlowPane {
 
     @FXML
     public void clearData() {
-        this.calculator.clearData();
+        this.calculator.clearHistory();
         this.reloadHistory();
     }
 

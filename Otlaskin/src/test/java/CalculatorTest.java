@@ -12,12 +12,39 @@ public class CalculatorTest {
     private CalculatorDAO dao = new CalculatorDAO();
 
     @Test
-    public void performFromMemory() {
+    public void performFromMemoryAddition() {
         calculator = new Calculator(dao);
         calculator.init(5);
         calculator.getMemory().setNextOperation(Calculator.Operator.ADDITION);
         calculator.performFromMemory(5);
         assertEquals(calculator.getValue(), 10, 0);
+    }
+
+    @Test
+    public void performFromMemorySubtraction() {
+        calculator = new Calculator(dao);
+        calculator.init(5);
+        calculator.getMemory().setNextOperation(Calculator.Operator.SUBSTRACTION);
+        calculator.performFromMemory(2);
+        assertEquals(calculator.getValue(), 3, 0);
+    }
+
+    @Test
+    public void performFromMemoryDivision() {
+        calculator = new Calculator(dao);
+        calculator.init(10);
+        calculator.getMemory().setNextOperation(Calculator.Operator.DIVISION);
+        calculator.performFromMemory(5);
+        assertEquals(calculator.getValue(), 2, 0);
+    }
+
+    @Test
+    public void performFromMemoryMultiplication() {
+        calculator = new Calculator(dao);
+        calculator.init(5);
+        calculator.getMemory().setNextOperation(Calculator.Operator.MULTIPLICATION);
+        calculator.performFromMemory(5);
+        assertEquals(calculator.getValue(), 25, 0);
     }
 
     @Test
@@ -34,9 +61,9 @@ public class CalculatorTest {
     public void substraction() {
         calculator = new Calculator(dao);
         calculator.init(10);
-        calculator.subsctraction(5);
+        calculator.subtraction(5);
         assertEquals(calculator.getValue(), 5.0, 0);
-        calculator.subsctraction(3);
+        calculator.subtraction(3);
         assertEquals(calculator.getValue(), 2.0, 0);
     }
 

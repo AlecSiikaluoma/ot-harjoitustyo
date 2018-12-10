@@ -1,6 +1,7 @@
 import dao.CalculatorDAO;
 import domain.Calculator;
 import domain.Operation;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
 
@@ -13,6 +14,12 @@ import java.util.List;
 public class CalculatorDAOTest {
 
     CalculatorDAO db;
+
+    @Before
+    public void setup() {
+        db = new CalculatorDAO();
+        db.deleteAll();
+    }
 
     @Test
     public void add() {
