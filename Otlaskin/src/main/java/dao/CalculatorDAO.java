@@ -50,20 +50,19 @@ public class CalculatorDAO {
         }
     }
 
-    public void add(double value1, double value2, double result, Calculator.Operator operation) {
+    public void add(Operation o) {
         String sql = "INSERT INTO calculator(value1, value2, result, operation) VALUES (?,?,?,?);";
         try(Connection conn = DriverManager.getConnection("jdbc:sqlite:" + this.path);
                 PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setDouble(1, value1);
-            pstmt.setDouble(2, value2);
-            pstmt.setDouble(3, result);
-            pstmt.setString(4, operation.name());
+            pstmt.setDouble(1, o.getValue1());
+            pstmt.setDouble(2, o.getValue2());
+            pstmt.setDouble(3, o.getResult());
+            pstmt.setString(4, o.getOperator().name());
             pstmt.executeUpdate();
         } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
     }
-
 
 
 }

@@ -27,6 +27,13 @@ public class Operation {
         this.operation = Operator.valueOf(operation);
     }
 
+    public Operation(double val1, double val2, double result, Operator operation) {
+        this.value1 = val1;
+        this.value2 = val2;
+        this.result = result;
+        this.operation = operation;
+    }
+
     public double getValue1() {
         return value1;
     }

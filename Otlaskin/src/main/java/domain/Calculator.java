@@ -112,7 +112,8 @@ public class Calculator {
 
 
     private void saveOperation(double val1, double val2, Operator operator) {
-        calculatorDao.add(val1, val2, this.value, operator);
+        Operation o = new Operation(val1, val2, this.value, operator);
+        calculatorDao.add(o);
     }
 
 }
