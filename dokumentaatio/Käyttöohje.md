@@ -17,3 +17,5 @@ Napilla "=" suoritetaan operaatio, joka on syötetty kenttään. Voi sisältää
 Napilla "." voi lisätä desimaaleita. 
 
 Laskimen sivupalkkiin ilmestyy kaikki äskeiset operaatiot ja niiden lopputulokset. Klikkaamalla operaatiota voidaan ottaa lopputulos laskimen kenttään ja manipuloida sitä.
+
+Laskimen historian voi nollatta ala rivillä olevasta näppäimestä "clear".
