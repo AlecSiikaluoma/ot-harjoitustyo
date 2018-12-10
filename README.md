@@ -1,6 +1,6 @@
 # Ot-harjoitustyö #
 
-Projektissa toteutetaan yksinkertainen laskin käyttäen Javaa ja Java FMXL. Laskin projekti sijaitsee kansiossa Otlasking.
+Projektissa toteutetaan yksinkertainen laskin käyttäen Javaa ja Java FMXL. Laskin projekti sijaitsee kansiossa Otlaskin.
 
 [Käyttöohje](https://github.com/AlecSiikaluoma/ot-harjoitustyo/blob/master/dokumentaatio/Käyttöohje.md)
 
