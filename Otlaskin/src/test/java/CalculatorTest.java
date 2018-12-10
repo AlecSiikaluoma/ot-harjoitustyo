@@ -12,6 +12,15 @@ public class CalculatorTest {
     private CalculatorDAO dao = new CalculatorDAO();
 
     @Test
+    public void performFromMemory() {
+        calculator = new Calculator(dao);
+        calculator.init(5);
+        calculator.getMemory().setNextOperation(Calculator.Operator.ADDITION);
+        calculator.performFromMemory(5);
+        assertEquals(calculator.getValue(), 10, 0);
+    }
+
+    @Test
     public void addition() {
         calculator = new Calculator(dao);
         calculator.init(10);

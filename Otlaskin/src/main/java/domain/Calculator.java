@@ -7,7 +7,7 @@ import java.util.List;
 public class Calculator {
 
     private double value;
-    private boolean empty;
+    private CalculatorMemory memory;
 
     private final CalculatorDAO calculatorDao;
 
@@ -17,22 +17,26 @@ public class Calculator {
     }
 
     /**
-     * Initalizes new calculator with state 0 and set empty flag true. Use database object to save operations
+     * Initalizes new calculator with state 0 and saves database object to save operations
      */
     public Calculator(CalculatorDAO dao) {
         this.calculatorDao = dao;
         this.value = 0;
-        this.empty = true;
+        this.memory = new CalculatorMemory();
     }
 
     /**
-     * Initalizes new calculator with vaue and set empty flag true. Use database object to save operations.
+     * Initalizes new calculator with value and saves database object to save operations.
      * @return Initial value.
      */
     public Calculator(CalculatorDAO dao, double value) {
         this.calculatorDao = dao;
         this.value = value;
-        this.empty = true;
+        this.memory = new CalculatorMemory();
+    }
+
+    public CalculatorMemory getMemory() {
+        return this.memory;
     }
 
     public List<Operation> getHistory() {
@@ -55,7 +59,7 @@ public class Calculator {
      */
     public void clear() {
         this.value = 0;
-        this.empty = true;
+        this.memory.clearNextOperation();
     }
 
     /**
@@ -64,6 +68,30 @@ public class Calculator {
      */
     public void init(double val) {
         this.value = val;
+    }
+
+    /**
+     * Performs the next operation specified for the calculator.
+     * @param val This value is used in performing the operation.
+     */
+    public void performFromMemory(double val) {
+        if(memory.getNextOperation() == Operator.NONE) {
+            return ;
+        }
+        switch (memory.getNextOperation()) {
+            case ADDITION:
+                this.addition(val);
+                break;
+            case SUBSTRACTION:
+                this.subsctraction(val);
+                break;
+            case MULTIPLICATION:
+                this.multiplication(val);
+                break;
+            case DIVISION:
+                this.division(val);
+                break;
+        }
     }
 
     /**
@@ -107,7 +135,6 @@ public class Calculator {
         }
         value = value / val;
         saveOperation(value1, val, Operator.DIVISION);
-
     }
 
 

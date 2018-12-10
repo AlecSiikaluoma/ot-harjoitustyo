@@ -1,6 +1,7 @@
 package ui;
 
 import dao.CalculatorDAO;
+import domain.CalculatorMemory;
 import domain.Operation;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,13 +24,13 @@ import java.util.List;
 public class CalculatorController extends FlowPane {
 
     private Main main;
-    private boolean operationPending = false;
     private Calculator calculator;
-    private Operator nextOperation = Operator.NONE;
+    private CalculatorMemory memory;
 
     public CalculatorController() {
         CalculatorDAO dao = new CalculatorDAO();
         calculator = new Calculator(dao);
+        this.memory = calculator.getMemory();
     }
 
     public void setMain(Main main) {
@@ -46,8 +47,7 @@ public class CalculatorController extends FlowPane {
     public void clear() {
         input.setText("");
         calculator.clear();
-        operationPending = false;
-        nextOperation = Operator.NONE;
+        memory.clearNextOperation();
     }
 
     @FXML
@@ -55,7 +55,7 @@ public class CalculatorController extends FlowPane {
         Button source = (Button) event.getSource();
         int number = Integer.parseInt(source.getText());
         input.setText(input.getText() + number);
-        if(!operationPending) {
+        if(!memory.operationPending()) {
             calculator.init(Double.parseDouble(input.getText()));
         }
     }
@@ -87,7 +87,7 @@ public class CalculatorController extends FlowPane {
 
     @FXML
     public void makeDecimal() {
-        if(operationPending) {
+        if(memory.operationPending()) {
             String text = input.getText();
             if(input.getText().substring(0,1).equals("-")) {
                 text = input.getText().substring(1,input.getText().length());
@@ -101,7 +101,7 @@ public class CalculatorController extends FlowPane {
 
     @FXML
     public void negate() {
-        if(!operationPending) {
+        if(!memory.operationPending()) {
             this.calculator.multiplication(-1);
             reloadValue();
         }
@@ -169,57 +169,32 @@ public class CalculatorController extends FlowPane {
     }
 
     private void operate() {
-        if(this.nextOperation == Operator.NONE) {
+        if(!memory.operationPending()) {
             return ;
         }
         String text = input.getText();
         if(input.getText().substring(0,1).equals("-")) {
             text = input.getText().substring(1,input.getText().length());
         }
-        if (nextOperation == Operator.ADDITION) {
-            String[] values = text.split("\\+");
-            if(values.length >= 2) {
-                double value = Double.parseDouble(values[1]);
-                calculator.addition(value);
-            }
-        } else if (nextOperation == Operator.SUBSTRACTION) {
-            String[] values = text.split("\\-");
-            if(values.length >= 2) {
-                double value = Double.parseDouble(values[1]);
-                calculator.subsctraction(value);
-            }
-        } else if (nextOperation == Operator.MULTIPLICATION) {
-            String[] values = text.split("x");
-            if(values.length >= 2) {
-                double value = Double.parseDouble(values[1]);
-                calculator.multiplication(value);
-            }
-        } else if (nextOperation == Operator.DIVISION) {
-            String[] values = text.split("/");
-            if(values.length >= 2) {
-                double value = Double.parseDouble(values[1]);
-                calculator.division(value);
-            }
+        String[] values = text.split("\\+|x|\\/|\\-");
+        if(values.length >= 2) {
+            double value = Double.parseDouble(values[1]);
+            calculator.performFromMemory(value);
         }
         this.reloadHistory();
         input.setText("" + calculator.getValue());
-        operationPending = false;
-        nextOperation = Operator.NONE;
+        memory.clearNextOperation();
     }
 
     private void evaluate(Operator operator) {
         String operationCharacter = operatorToValue(operator);
-        if(!operationPending) {
+        if(!memory.operationPending()) {
             this.calculator.init(Double.parseDouble(input.getText()));
-            this.operationPending = true;
-            input.setText(input.getText() + operationCharacter);
-            nextOperation = operator;
         } else {
             operate();
-            input.setText(input.getText() + operationCharacter);
-            operationPending = true;
-            nextOperation = operator;
         }
+        input.setText(input.getText() + operationCharacter);
+        memory.setNextOperation(operator);
     }
 
 
