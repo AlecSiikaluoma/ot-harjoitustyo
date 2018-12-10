@@ -10,6 +10,10 @@ Projektissa toteutetaan yksinkertainen laskin käyttäen Javaa ja Java FMXL. Las
 
 [Työaikakirjanpito](https://github.com/AlecSiikaluoma/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
 
+## Releaset
+
+[Loppupalautus](https://github.com/AlecSiikaluoma/ot-harjoitustyo/releases/tag/1)
+
 ## Komentorivitoiminnot
 
 ### Testaus
