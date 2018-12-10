@@ -9,4 +9,7 @@
 | 26.11| 1 | Refaktorointi. Laskimen logiikan erottelu |
 | 2.12| 2 | Projektin ylläpito, dokumentaation lisäys |
 | 2.12| 2 | Desimaalien lisäys ja testaus |
-| - | 13 | yhteensä |
+| 8.12 | 3 | tietokantaan laskujen lisäys: ominaisuuden toteutus |
+| 8.12 | 1 | ominaisuuden testaus |
+| 10.12 | 1 | projektin yleistä ylläpitoa, valmistelua releasiin |
+| - | 18 | yhteensä |
