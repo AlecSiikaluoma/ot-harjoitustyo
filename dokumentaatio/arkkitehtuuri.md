@@ -45,7 +45,7 @@ Koodauksen yksinkeraistamisen vuoksi myös koko ohjelman Main metodi on tässä 
 
 ### Operaation suoritus
 
-<img src="" />
+<img src="https://github.com/AlecSiikaluoma/ot-harjoitustyo/blob/master/dokumentaatio/Laskutoimitus%20muistilla_%205%2B4.png" />
 
 ## Parannuksia
 
