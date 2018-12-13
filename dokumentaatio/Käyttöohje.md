@@ -1,6 +1,6 @@
 # Käyttöohje
 
-Ohjelman voi käynnistää jar tiedostolla. Tiedosto siajaitsee projektin juuressa
+Ohjelman voi käynnistää jar tiedostolla. Tiedosto siajaitsee projektin juuressa, jos lataat koko projektin Githubista. Jos otat releasen, sijoita "Otlaskin.jar" tilalle .jar tiedoston sijainti.
 
 ```
 java -jar Otlaskin.jar
