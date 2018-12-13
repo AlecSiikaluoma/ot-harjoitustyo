@@ -41,6 +41,12 @@ CalculatorController luokassa siis ikään kuin käytetään vain Calculator oli
 
 Koodauksen yksinkeraistamisen vuoksi myös koko ohjelman Main metodi on tässä pakkauksessa. Main liittä controllerin käyttöliittyymän ulkoasu tiedostoon sekä luo yhteyden tietokantaan.
 
+## Päätoiminnallisuus
+
+### Operaation suoritus
+
+<img src="" />
+
 ## Parannuksia
 
 - Ohjelman käynnistämistä olisi syytä siistiä. Tällä hetkellä se tapahtuu Ui pakkauksessa Main tiedostossa. Ainakin tietokannan taulun alustamisen voisi siirtää muualle.
