@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 import ui.CalculatorController;
+import org.sqlite.JDBC;
 
 import java.sql.*;
 import java.io.IOException;
@@ -37,6 +38,8 @@ public class Main extends Application {
         try
         {
             // create a database connection
+            Class.forName("org.sqlite.JDBC");
+            //connection = DriverManager.getConnection(this.getClass().getResource("calculator.db").toString());
             connection = DriverManager.getConnection("jdbc:sqlite:db/calculator.db");
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(10);
@@ -44,7 +47,7 @@ public class Main extends Application {
             // create
             statement.executeUpdate("create table if not exists calculator (id integer primary key, value1 real, value2 real, result real, operation string)");
         }
-        catch(SQLException e)
+        catch(SQLException | ClassNotFoundException e)
         {
             System.err.println(e.getMessage());
         }
