@@ -10,7 +10,7 @@ Ohjelmaa voi käyttää laskimena. Se tarjoaa kaikki perusoperaatiot: plus-, mii
 
 Nykyiseen versioon toteuttaa perusoperaatiota ja tietokantaan talennuksen.
 
-Sivupalkkiin haeataan tietokannasta viimeisimmät operaatiot ja näiden lopputuloksia voidaan valita uudelleen suoritettavaksi.
+Sivupalkkiin haeataan tietokannasta viimeisimmät operaatiot ja näiden lopputuloksia voidaan valita uudelleen suoritettavaksi. Historian voi nollatta alarivillä olevasta näppäimesta "clear".
 
 Tällä hetkellä operaatiota voidaan suorittaa vain yksi kerrallaan. Eli kun syötetään ensimmäinen luku, tämän jälkeen halluttu operaatio ja lopuksi operaatioon toinen luku, niin operaatiot suoritetaan. Ei ole siis mahdollista suorittaa kerrallaan useampaa operaatiota, vaan on aina välissä suoritettava ensimmäinen operaatio ja käytettävä tätä lopputulosta. 
 
