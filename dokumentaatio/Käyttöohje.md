@@ -6,7 +6,7 @@ Ohjelman voi käynnistää jar tiedostolla. Tiedosto siajaitsee projektin juures
 java -jar Otlaskin.jar
 ```
 
-Tämän jälkeen aukeaa näkymä laskemista. Laskimeen voi syöttää nyt lukuja. Laskimella tehdään yksi operaatio kerrallaan. Esimerkiksi kun syöttää luvun ja tämän jälkeen operaation ja vielä lopuksi lisättävän operaation numeron, niin laskin automaattisesi suorittaa laskutoimenpiteen. Tähän lopputulokseen voi sitten lisätä uusia operaatioita. 
+Tämän jälkeen aukeaa näkymä laskemista. Laskimeen voi syöttää nyt lukuja. Laskimella tehdään yksi operaatio kerrallaan. Esimerkiksi kun syöttää luvun ja tämän jälkeen operaation ja vielä lopuksi lisättävän numeron, niin laskin automaattisesi suorittaa laskutoimenpiteen. Se tunnistaa siis, että on oikea laskea lopputulos. Tähän saatun lopputulokseen voi sitten lisätä uuden operaation ja toistaa saman. 
 
 Napin "+/-" avulla voi käntää luvun merkin.
 
