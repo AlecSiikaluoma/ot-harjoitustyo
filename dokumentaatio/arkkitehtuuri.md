@@ -31,7 +31,7 @@ Domain toetuttaa itse sovelluslogiikan. Se sisältää luokan laskimelle, laskim
 
 Calculator on sovelluksen logiikan kannalta pääluokka. Sitä luodessa annetaan paramtetriksi DAO olio, jonka kautta sovellus tallentaa tietoa pysyvään sijaintiin. Sovelluksen tallennusmuoto voidaan näin muuttaa helposti antamalla eri DAO olio.
 
-Calculator luo myös oman CalculatorMemory olion, jonka avulla se voi pitää kirjaa siitä mikä operaatio tällä hetkellä odottaa suoritusta.
+Calculator luo myös oman CalculatorMemory olion, jonka avulla se voi pitää kirjaa siitä mikä operaatio tällä hetkellä odottaa suoritusta. CalculatorMemory luokkaa ei tämän vaiheen toteutuksessa missä suoritetaan kerralla vain yksi operaatio välttämättä tarvitsi. Jatkoa varten kuitenkin operaatioita voi olla useampia ja ne voitaisiin säilyttää tässä luokassa esim. listalla. Kun operaatioita on monia muistissa on hyvä eriyttää tämä muisti varsinaisesta Calculator luokasta. 
 
 ## Ui pakkaus - käyttöliittymmä
 
@@ -46,6 +46,8 @@ Koodauksen yksinkeraistamisen vuoksi myös koko ohjelman Main metodi on tässä 
 ### Operaation suoritus
 
 <img src="https://github.com/AlecSiikaluoma/ot-harjoitustyo/blob/master/dokumentaatio/Laskutoimitus%20muistilla_%205%2B4.png" />
+
+Kun käyttäjä ensin painaa nappia 5. Tämän jälkeen nappia + ja lopuksi 4. Tapahtuu kaavion kuvailemat metodi kutsut. Tässä näkyy miten CalculatorMemory hoitaa käyttöliityymän kanssa laskujärjestyksen hallinnnoinin ja Calculator luokalle siirtyy vastuu vasta kun itse operaatio suoritetaan tai tilaa muutetaan. 
 
 ## Parannuksia
 
