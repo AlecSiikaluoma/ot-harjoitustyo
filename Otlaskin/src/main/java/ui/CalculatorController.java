@@ -1,20 +1,17 @@
 package ui;
 
-import dao.CalculatorDAO;
+import dao.DatabaseCalculatorDAO;
 import domain.CalculatorMemory;
 import domain.Operation;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.geometry.*;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
 import domain.Calculator;
 import domain.Calculator.Operator;
-import javafx.scene.control.Label;
-import javafx.scene.paint.*;
 
 import java.util.List;
 
@@ -28,7 +25,7 @@ public class CalculatorController extends FlowPane {
     private CalculatorMemory memory;
 
     public CalculatorController() {
-        CalculatorDAO dao = new CalculatorDAO();
+        DatabaseCalculatorDAO dao = new DatabaseCalculatorDAO();
         calculator = new Calculator(dao);
         this.memory = calculator.getMemory();
     }

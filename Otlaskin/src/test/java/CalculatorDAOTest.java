@@ -1,4 +1,4 @@
-import dao.CalculatorDAO;
+import dao.DatabaseCalculatorDAO;
 import domain.Calculator;
 import domain.Operation;
 import org.junit.Before;
@@ -13,17 +13,17 @@ import java.util.List;
  */
 public class CalculatorDAOTest {
 
-    CalculatorDAO db;
+    DatabaseCalculatorDAO db;
 
     @Before
     public void setup() {
-        db = new CalculatorDAO();
+        db = new DatabaseCalculatorDAO();
         db.deleteAll();
     }
 
     @Test
     public void add() {
-        db = new CalculatorDAO();
+        db = new DatabaseCalculatorDAO();
 
         Operation op = new Operation(5555,3333,1111, Calculator.Operator.ADDITION);
         db.add(op);
@@ -40,7 +40,7 @@ public class CalculatorDAOTest {
 
     @Test
     public void deleteAll() {
-        db = new CalculatorDAO();
+        db = new DatabaseCalculatorDAO();
         Operation op = new Operation(5555,3333,1111, Calculator.Operator.ADDITION);
         db.add(op);
         db.deleteAll();
@@ -49,7 +49,7 @@ public class CalculatorDAOTest {
 
     @Test
     public void getAll() {
-        db = new CalculatorDAO();
+        db = new DatabaseCalculatorDAO();
         db.deleteAll();
 
         Operation op = new Operation(5555,3333,1111, Calculator.Operator.ADDITION);

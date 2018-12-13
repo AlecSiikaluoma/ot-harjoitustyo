@@ -1,82 +1,30 @@
 package dao;
 
-import domain.Calculator;
 import domain.Operation;
 
-import java.math.BigDecimal;
-import java.sql.*;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * Created by alecsiikaluoma on 8.12.2018.
- * This class is a database object which is used to interface with the database tables.
+ * Created by alecsiikaluoma on 13.12.2018.
+ * Implements an interface for manipulating calculator data.
  */
-public class CalculatorDAO {
-
-    private final static String DEFAULT_DATABASE_PATH = "db/calculator.db";
-    private String path;
+public interface CalculatorDAO {
 
     /**
-     * Init database path.
+     * Gets all operations from the database.
+     * @return Returns them as a list of operations.
      */
-    public CalculatorDAO() {
-        this.path = this.DEFAULT_DATABASE_PATH;
-    }
+    List<Operation> getAll();
 
     /**
-     * Gets the operation history from database.
-     * @return A list of operation objects.
+     * Deletes all operations from the database.
      */
-    public List<Operation> getAll() {
-        ArrayList<Operation> operations = new ArrayList<>();
-        String sql = "SELECT value1, value2, result, operation FROM calculator;";
-        try(Connection conn = DriverManager.getConnection("jdbc:sqlite:" + this.path);
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery(sql)) {
-                while (rs.next()) {
-                    operations.add(new Operation(rs.getDouble("value1"), rs.getDouble("value2"), rs.getDouble("result"), Calculator.Operator.valueOf(rs.getString("operation"))));
-
-                }
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        }
-        return operations;
-    }
+    void deleteAll();
 
     /**
-     * Deletes all the history.
+     * Adds an operation to database.
+     * @param operation Operation as an operation object which provides information about values and which operation.
      */
-    public void deleteAll() {
-        String sql = "DELETE FROM calculator;";
-        try(Connection conn = DriverManager.getConnection("jdbc:sqlite:" + this.path);
-            PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        }
-    }
-
-    /**
-     * Add one operation to the history.
-     * @param operation Operation to be added
-     */
-    public void add(Operation operation) {
-        String sql = "INSERT INTO calculator(value1, value2, result, operation) VALUES (?,?,?,?);";
-        try(Connection conn = DriverManager.getConnection("jdbc:sqlite:" + this.path);
-                PreparedStatement pstmt = conn.prepareStatement(sql)) {
-            pstmt.setDouble(1, operation.getValue1());
-            pstmt.setDouble(2, operation.getValue2());
-            pstmt.setDouble(3, operation.getResult());
-            pstmt.setString(4, operation.getOperator().name());
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        }
-    }
-
+    void add(Operation operation);
 
 }

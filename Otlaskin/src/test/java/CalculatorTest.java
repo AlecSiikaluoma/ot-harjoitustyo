@@ -1,7 +1,7 @@
 /**
  * Created by alecsiikaluoma on 27.11.2018.
  */
-import dao.CalculatorDAO;
+import dao.DatabaseCalculatorDAO;
 import domain.Calculator;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
 public class CalculatorTest {
 
     private Calculator calculator;
-    private CalculatorDAO dao = new CalculatorDAO();
+    private DatabaseCalculatorDAO dao = new DatabaseCalculatorDAO();
 
     @Test
     public void performFromMemoryAddition() {
