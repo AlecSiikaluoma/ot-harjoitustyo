@@ -1,11 +1,14 @@
 # Testausdokumentti
 
-Ohjelmaa on testatty yksikkötestein JUnitilla. 
+Ohjelmaa on testatty yksikkötestein JUnitilla. Testikattavuus raportti voidaan luoda Jacoco liittänäisellä.
 
 ## Ykiskkötestaus
 
-### Calculator
-Luokalla on 100% testikattavuus.
+### CalculatorTest
+Calculator luokka totetuttaa kaikki laskimen operaatiot. Nämä on kaikki testattu mukaanlukien nollalla jaot. 
 
-### CalculatorController
-Käyttöliittymän controlleriin liittyy monimutkaisia Stringien parsimis ja yhdistely operaatioita, joita on testattu. 
+### CalculatorMemoryTest
+CalculatorMemory toiminnallisuuden, jolle Calculator luokkaa voidaan käyttää suoraviivaisemmin käyttöliityymästä muistin avulla. Muistiin voidaan asettaa seuraava operaatio, tyhjentää ja suorittaa se. Nämä on testattu.
+
+### CalculatorDAOTest
+CalculatorDAO luokka tarjoaa ominaisuudet tietokannan käyttöä varten. Laskujen haku, poisto ja lisäys on testattu. 

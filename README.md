@@ -8,6 +8,8 @@ Projektissa toteutetaan yksinkertainen laskin käyttäen Javaa ja Java FMXL. Las
 
 [Määrittelydokumentaatio](https://github.com/AlecSiikaluoma/ot-harjoitustyo/blob/master/dokumentaatio/Maarittelydokumentti.md)
 
+[Arkkitehtuurikuvaus](https://github.com/AlecSiikaluoma/ot-harjoitustyo/blob/master/dokumentaatio/arkkitehtuuri.md)
+
 [Työaikakirjanpito](https://github.com/AlecSiikaluoma/ot-harjoitustyo/blob/master/dokumentaatio/tyoaikakirjanpito.md)
 
 ## Releaset
