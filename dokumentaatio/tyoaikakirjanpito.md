@@ -12,4 +12,5 @@
 | 8.12 | 3 | tietokantaan laskujen lisäys: ominaisuuden toteutus |
 | 8.12 | 1 | ominaisuuden testaus |
 | 10.12 | 1 | projektin yleistä ylläpitoa, valmistelua releasiin |
-| - | 18 | yhteensä |
+| 14.12 | 2 | Arkkitehtuurikuvaus ja muuta dokimentaation päivitystä |
+| - | 20 | yhteensä |
