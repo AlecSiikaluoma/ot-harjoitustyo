@@ -14,7 +14,7 @@ Projektissa toteutetaan yksinkertainen laskin käyttäen Javaa ja Java FMXL. Las
 
 ## Releaset
 
-[Loppupalautus](https://github.com/AlecSiikaluoma/ot-harjoitustyo/releases/tag/1)
+[Loppupalautus](https://github.com/AlecSiikaluoma/ot-harjoitustyo/releases/tag/1.0)
 
 ## Komentorivitoiminnot
 
