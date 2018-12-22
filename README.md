@@ -41,7 +41,7 @@ Komennolla
 ```
 mvn package
 ```
-generoidaan suoritettava Jar tiedosto kansioon /target
+generoidaan suoritettava Jar tiedosto kansioon /target. Jar tiedostostaja generoituu kaksi oikea on "Otlaskin-1.0-SNAPSHOT-jar-with-dependencies.jar".
 
 ### Javadoc
 
